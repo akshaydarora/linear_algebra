@@ -14,7 +14,7 @@ class QRDecomposition(object):
         print("m:{}".format(self.m))
 
     def getQRDecomposeResult(self):
-
+        # Gram-Schmidt Method
         if self.rank<self.m:
             raise Exception("rank is smaller than columns")
         Q= np.zeros((self.n,self.m))
@@ -25,4 +25,19 @@ class QRDecomposition(object):
         Q=Q/(linalg.norm(Q,axis=0))
         R=Q.T@self.A
         return Q,R
+    
+    def getQRLeastSquares(self,decomposed,B):
+        Q=decomposed["Q"]
+        R=decomposed["R"]
+        QTB=Q.T@B
+        
+        x_lcs=np.linalg.solve(R, QTB)
+        return x_lcs
+    
+    def getQRLeastSquaresNorm(self,decomposed,B):
+        x_lcs=self.getQRLeastSquares(decomposed,B)
+        # Compute ||AX-B||
+        LS_norm=linalg.norm(self.A.dot(x_lcs)-B, 2)
+        x_lcs_norm=linalg.norm(x_lcs)
+        return LS_norm,x_lcs_norm
             
