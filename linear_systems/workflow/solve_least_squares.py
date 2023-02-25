@@ -14,6 +14,8 @@ if __name__=="__main__":
     data_dir="files/input/"
     with open(os.path.join(dir_name,"config/config.json"),"r",encoding='utf-8') as f:
         config=json.load(f)
+    with open(os.path.join(dir_name,"config/input_config.json"),"r",encoding='utf-8') as f:
+        input_config=json.load(f)    
     with open(data_dir+"data_A.json","r",encoding='utf-8') as f:
         input_data=json.load(f)
     with open(data_dir+"data_B.json","r",encoding='utf-8') as f:
@@ -33,8 +35,8 @@ if __name__=="__main__":
 
     #####Initialize the Methods#######
 
-    method_type="factorization"
-    method_name="cholesky"
+    method_type=input_config["method_type"]
+    method_name=input_config["method_name"]
 
     ##### LOAD THE DECOMPOSED/FACTORIZED Dataset ####
     file_dir=config[method_type][method_name]["file_dir"]

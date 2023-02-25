@@ -10,7 +10,8 @@ if __name__=="__main__":
     ######## Initialize Params #############
     with open(os.path.join(dir_name,"config/config.json"),"r",encoding='utf-8') as f:
         config=json.load(f)
-
+    with open(os.path.join(dir_name,"config/input_config.json"),"r",encoding='utf-8') as f:
+        input_config=json.load(f)
     with open(data_dir+"data_A.json","r",encoding='utf-8') as f:
         input_data=json.load(f)
 
@@ -23,8 +24,8 @@ if __name__=="__main__":
     ############ Create Linear System #####################
 
     # Initialize the Methods
-    method_type="decomposition"
-    method_name="qr"
+    method_type=input_config["method_type"]
+    method_name=input_config["method_name"]
     cls=LinearSystem(a,config)
     if method_type=="decomposition":
         decompose_status=cls.decompose(method_type,method_name)
