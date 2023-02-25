@@ -6,11 +6,13 @@ from services.save_load_ls.save_load_linear_system import SaveLoadLS
 class LinearSystem(object):
 
     def __init__(self,a,config):
+        
         self.a=a
         self.config=config
     
     # Initialize Decomposition
     def decompose(self,method_type,method_name,*args,**kwargs):
+
         decomposition_status={}
         file_dir=self.config[method_type][method_name]["file_dir"]
         file_name=self.config[method_type][method_name]["file_name"]
@@ -24,7 +26,7 @@ class LinearSystem(object):
             sls=SaveLoadLS(file_obj=QR_result,file_name=file_name,file_dir=file_dir)
             sls.save_file()
             decomposition_status["status"]="success"
-            decomposition_status["message"]="successully saved the {} : decomposed file {} in {} location".format(method_name,
+            decomposition_status["message"]="successully saved the {} : decomposed file{} in {} location".format(method_name,
                                                                                                                   file_name,
                                                                                                                   file_dir)
 
@@ -49,6 +51,7 @@ class LinearSystem(object):
     
     # Initialize Factorization
     def factorize(self,method_type,method_name,*args,**kwargs):
+
         factorization_status={}
         file_dir=self.config[method_type][method_name]["file_dir"]
         file_name=self.config[method_type][method_name]["file_name"]

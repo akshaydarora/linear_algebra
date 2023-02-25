@@ -8,6 +8,7 @@ from services.factorizers.cholesky_factorizer import CholeskyFactorizer
 from services.initializers.constraint_matrix_initializer import Matrix
 
 if __name__=="__main__":
+
     ######## Initialize Params #############
     dir_name=os.path.dirname(os.path.realpath(__file__)) 
     data_dir="files/input/"
@@ -24,6 +25,7 @@ if __name__=="__main__":
     ###### Load the Original RHS B dataset ######
     B=rhs_data["B"]
     # Initialize the matrix B and check for acceptance
+   
     b=RHS(B)
     b.checkRHS()
 
@@ -62,5 +64,3 @@ if __name__=="__main__":
             print(LS_norm,x_lcs_norm)
     else:
         print("invalid method type recvd, please choose decomposition or factorization")    
-
-

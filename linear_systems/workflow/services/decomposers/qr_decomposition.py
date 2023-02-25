@@ -1,6 +1,7 @@
 import numpy as np
 from numpy import linalg
 
+#### BIG - O Notation : O(2*n*m^2)
 class QRDecomposition(object):
 
     def __init__(self,a,method):
@@ -13,7 +14,9 @@ class QRDecomposition(object):
         print("rank:{}".format(self.rank))
         print("m:{}".format(self.m))
 
+
     def getQRDecomposeResult(self):
+
         # Gram-Schmidt Method
         if self.rank<self.m:
             raise Exception("rank is smaller than columns")
@@ -26,15 +29,19 @@ class QRDecomposition(object):
         R=Q.T@self.A
         return Q,R
     
+
     def getQRLeastSquares(self,decomposed,B):
+
         Q=decomposed["Q"]
         R=decomposed["R"]
         QTB=Q.T@B
-        
+
         x_lcs=np.linalg.solve(R, QTB)
         return x_lcs
     
+
     def getQRLeastSquaresNorm(self,decomposed,B):
+
         x_lcs=self.getQRLeastSquares(decomposed,B)
         # Compute ||AX-B||
         LS_norm=linalg.norm(self.A.dot(x_lcs)-B, 2)

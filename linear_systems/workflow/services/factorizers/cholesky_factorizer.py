@@ -2,20 +2,25 @@ import numpy as np
 from numpy import linalg
 from helper_utils.helpers import csqrt,isposdef
 
-
+#### BIG - O Notation : O(1/3 *n^3)
 class CholeskyFactorizer(object):
 
     def __init__(self,a):
+
         self.A = a.A
         self.metadata=a.metadata
         self.n=self.metadata["matrix_rows"]
         self.m=self.metadata["matrix_cols"]
         self.rank=linalg.matrix_rank(self.A)
 
+
     def test_positive_definite(self):
+
         assert isposdef(self.A)==True,"matrix is not positive definite"
 
+
     def getCHFResult(self):
+
         self.test_positive_definite()
         l=self.A.copy()
         n=len(l)
@@ -31,7 +36,9 @@ class CholeskyFactorizer(object):
             l[0:k,k]=0.0
         return l 
     
+
     def getCHFLeastSquares(self,factorized,B):
+
         L=factorized["L"]
         x_lcs=B.copy()
         #Solution of [L]{y}={b}
@@ -42,9 +49,12 @@ class CholeskyFactorizer(object):
             x_lcs[k]=(x_lcs[k]-np.dot(L[k+1:self.n,k],x_lcs[k+1:self.n]))/L[k,k]  
         return x_lcs
     
+
     def getCHFLeastSquaresNorm(self,factorized,B):
+
         x_lcs=self.getCHFLeastSquares(factorized,B)
         # Compute ||AX-B||
         LS_norm=linalg.norm(self.A.dot(x_lcs)-B, 2)
         x_lcs_norm=linalg.norm(x_lcs)
         return LS_norm,x_lcs_norm
+    
