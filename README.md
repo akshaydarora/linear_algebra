@@ -10,10 +10,22 @@ used to solve for overdetermined homogeneous linear system
 # Steps to Compute the Least Squares 
 
 Step 1 : Run the create linear system to initialize the Matrix A and precompute the decomposition Matrix
-    Configure the Decomposition Method :
+    Configure the Decomposition/Factorization Method from one of the configurations below
+    
+    
     {
     "method_type":"decomposition",
     "method_name":"qr"
+}
+
+    {
+    "method_type":"decomposition",
+    "method_name":"svd"
+}
+
+    {
+    "method_type":"factorization",
+    "method_name":"cholesky"
 }
 --> run $create_linear_system.py
 
