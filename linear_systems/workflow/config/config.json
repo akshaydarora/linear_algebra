@@ -1,0 +1,19 @@
+{
+    "decomposition":{
+        "qr":{
+            "file_dir":"files/QR",
+            "file_name":"qr"
+        },
+        "svd":{
+            "file_dir":"files/SVD",
+            "file_name":"svd"
+        }
+    },    
+    "factorization":{
+
+        "cholesky":{
+            "file_dir":"files/CHOLESKY",
+            "file_name":"cholesky"
+        }
+    }
+}

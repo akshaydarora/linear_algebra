@@ -1,6 +1,6 @@
 import numpy as np
 
-class RHSCheck(object):
+class RHS(object):
 
     def __init__(self, b):
         print("Initialized the new instance of b")
