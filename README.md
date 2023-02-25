@@ -28,6 +28,7 @@ Step 1 : Run the create linear system to initialize the Matrix A and precompute 
     "method_name":"cholesky"
     }
 --> run $create_linear_system.py
+--> output $ {'status': 'success', 'message': 'successully saved the qr : decomposed file qr in files/transformed/QR location'}
 
 Step 2 : Solve the Least Squares for X using decomposition methods and get Least Squares Norm
 
