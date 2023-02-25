@@ -16,17 +16,17 @@ Step 1 : Run the create linear system to initialize the Matrix A and precompute 
     {
     "method_type":"decomposition",
     "method_name":"qr"
-}
+    }
 
     {
     "method_type":"decomposition",
     "method_name":"svd"
-}
+    }
 
     {
     "method_type":"factorization",
     "method_name":"cholesky"
-}
+    }
 --> run $create_linear_system.py
 
 Step 2 : Solve the Least Squares for X using decomposition methods and get Least Squares Norm
