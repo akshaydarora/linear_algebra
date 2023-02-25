@@ -2,6 +2,7 @@ from ctypes import c_float, c_long, byref, POINTER, cast
 import numpy as np
 
 def csqrt(num):
+
     xhalf = 0.5*num
     x = c_float(num)
     i = cast(byref(x), POINTER(c_long)).contents.value
@@ -13,5 +14,6 @@ def csqrt(num):
     return sqrt_res
 
 def isposdef(x):
+
     status= np.all(np.linalg.eigvals(x)>0)
     return status
